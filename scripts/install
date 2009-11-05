@@ -1,11 +1,11 @@
 #!/bin/bash
 
+rc_files="$HOME/.bash_profile $HOME/.bashrc $HOME/.zshrc"
 if [[ "root" = "$(whoami)" ]] ; then
   rvm_path=/usr/local/rvm
-  rc_files="/etc/profile /etc/zshenv"
+  rc_files="$rc_files /etc/profile /etc/zshenv"
 else
   rvm_path=$HOME/.rvm
-  rc_files="$HOME/.bash_profile $HOME/.bashrc $HOME/.zshrc"
 fi
 
 #
@@ -47,7 +47,7 @@ ln -nfs $rvm_path/scripts/rvm $rvm_path/bin/rvm
 #
 if [[ -z "$rvm_loaded_flag" ]] ; then
   for rcfile in $(echo $rc_files) ; do
-    if [[ ! -e $rcfile ]] ; then touch $rcfile ; fi
+    if [[ ! -f $rcfile ]] ; then touch $rcfile ; fi
     if [[ -z "$(awk '/\.rvm\/scripts\/rvm/' $rcfile)" ]] ; then
       echo "Adding 'if [[ -s $rvm_path/scripts/rvm ]] ; then source $rvm_path/scripts/rvm ; fi' to $rcfile."
       echo -e "\n# rvm-install added line:\nif [[ -s $rvm_path/scripts/rvm ]] ; then source $rvm_path/scripts/rvm ; fi\n" >> $rcfile

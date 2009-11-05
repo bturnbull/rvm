@@ -56,7 +56,7 @@ __rvm_debug() {
   if [[ "root" = "$(whoami)" ]] ; then
     debug_files="$rvm_path/default $rvm_path/system $rvm_path/config/db /etc/rvmrc /etc/gemrc"
   else
-    debug_files="$rvm_path/default $rvm_path/system $rvm_path/config/db ~/.rvmrc ~/.gemrc"
+    debug_files="$rvm_path/default $rvm_path/system $rvm_path/config/db $HOME/.rvmrc $HOME/.gemrc"
   fi
 
   for file_name in $(echo $debug_files); do
