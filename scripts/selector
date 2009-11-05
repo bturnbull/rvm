@@ -212,7 +212,6 @@ __rvm_use() {
     PATH=$(echo $PATH | tr ':' '\n' | awk '$0 !~ /rvm/' | paste -sd : -)
     PATH=$rvm_bin_path:$PATH ; export PATH
     PATH=$MY_RUBY_HOME/bin:$GEM_HOME/bin:$rvm_path/bin:$PATH ; export PATH
-
   fi
 
   if [[ ! -z "$rvm_default_flag" ]] && [[ "default" != "$rvm_ruby_interpreter" ]] ; then

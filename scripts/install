@@ -11,7 +11,6 @@ fi
 #
 # Setup
 #
-
 item="$(tput setaf 2)* $(tput sgr0)"
 question="\n$(tput setaf 2)<?>$(tput sgr0)"
 cwd=$(pwd)
@@ -57,7 +56,8 @@ if [[ -z "$rvm_loaded_flag" ]] ; then
 fi
 
 if [[ "root" = "$(whoami)" ]] ; then
-  ln -nfs /usr/local/bin/rvm $rvm_path/scripts/rvm
+  ln -nfs $rvm_path/scripts/rvm /usr/local/bin/rvm
+  chmod +x /usr/local/bin/rvm
 fi
 
 #
