@@ -221,6 +221,7 @@ __rvm_use() {
 
     if [[ "root" = "$(whoami)" ]] ; then
       for binary in erb gem irb rake rdoc ri ruby testrb ; do
+        rm -f /usr/local/bin/$binary
         ln -nfs $rvm_ruby_home/bin/$binary /usr/local/bin/$binary
       done
     fi
